@@ -10,12 +10,12 @@ import {
 export const FriendList = ({ friends }) => {
   return (
     <Wrapper>
-      {friends.map(friend => (
-        <FriendListItem key={friend.id}>
-          <Status online={friend.isOnline === true}></Status>
+      {friends.map(({ id, isOnline, avatar, name }) => (
+        <FriendListItem key={id}>
+          <Status online={isOnline === true}></Status>
           <Avatar
-            src={friend.avatar}
-            alt={friend.name}
+            src={avatar}
+            alt={name}
             width="48"
             style={{
               backgroundColor: randomColor({
@@ -25,7 +25,7 @@ export const FriendList = ({ friends }) => {
               }),
             }}
           />
-          <Name>{friend.name}</Name>
+          <Name>{name}</Name>
         </FriendListItem>
       ))}
     </Wrapper>
